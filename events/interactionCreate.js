@@ -39,10 +39,6 @@ module.exports = {
       try {
         await command.execute(settings, interaction);
       } catch (error) {
-        await interaction.reply({
-          content: "There was an error while executing this command!",
-          ephemeral: true,
-        });
         console.error(error);
 
         if (process.env.BUGSNAG_API_KEY) {
@@ -61,15 +57,12 @@ module.exports = {
       try {
         await button.execute(settings, interaction);
       } catch (error) {
-        await interaction.reply({
-          content: "There was an error while executing this command!",
-          ephemeral: true,
-        });
         console.error(error);
 
         if (process.env.BUGSNAG_API_KEY) {
           Bugsnag.notify(error);
         }
+
       }
 
       console.log(`${interaction.user.tag} pressed #${interaction.customId}`);
