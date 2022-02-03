@@ -62,7 +62,6 @@ module.exports = {
         if (process.env.BUGSNAG_API_KEY) {
           Bugsnag.notify(error);
         }
-
       }
 
       console.log(`${interaction.user.tag} pressed #${interaction.customId}`);

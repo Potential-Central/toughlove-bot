@@ -319,8 +319,15 @@ class TLApplication {
         this.applicationData.user_id
       );
 
+      const roleId = await this.settings.getRoleId();
+      let roleNotifyText = "";
+
+      if (roleId) {
+        roleNotifyText = `<@&${roleId}>`;
+      }
+
       const header = {
-        content: `**Applicant:** <@${this.applicationData.user_id}>\n**Discord Joined At:** ${user.createdAt}\n**PC Joined At:** ${member.joinedAt}\n`,
+        content: `**Applicant:** <@${this.applicationData.user_id}>\n**Discord Joined At:** ${user.createdAt}\n**PC Joined At:** ${member.joinedAt}\n\n${roleNotifyText}`,
         components: [buttons],
       };
 
